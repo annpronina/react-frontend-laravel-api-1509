@@ -6,6 +6,10 @@ export default function Home() {
                 <Link to="/" className="nav-link">Home</Link>
             </nav>
         </header>
+
+        <main>
+            <Outlet />
+        </main>
         </>
     );
 }
