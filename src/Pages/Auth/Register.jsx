@@ -9,6 +9,8 @@ export default function Register() {
     
     });
 
+    const [errors, setErrors] = useState({})
+
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -21,7 +23,12 @@ export default function Register() {
 
         const data = await res.json();
 
-        console.log(data);
+        if (data.errors) {
+            setErrors(data.errors)
+        }else {
+            console.log(data);
+        }
+
     }
 
     return (
@@ -38,6 +45,7 @@ export default function Register() {
                 setFormData({
                     ...formData, name: e.target.value
                     })}/>
+                {errors.title && <p className="error">{errors.name}</p>}
         </div>
 
         <div>
